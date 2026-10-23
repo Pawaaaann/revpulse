@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: revpulse-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: MONGODB_URL
+        sync: false
+      - key: DATABASE_NAME
+        value: revpulse_revenue_intelligence
+      - key: CORS_ORIGINS
+        sync: false
+      - key: PORT
+        value: 8000
